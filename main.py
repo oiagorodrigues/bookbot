@@ -1,7 +1,14 @@
+import sys
+
 from stats import get_num_words, get_sorted_num_characters
 
 def main():
-    file_path = "./books/frankenstein.txt"
+    try:
+        file_path = sys.argv[1]
+    except IndexError:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
     num_words = get_num_words(file_path)
     characters_count = get_sorted_num_characters(file_path)
 

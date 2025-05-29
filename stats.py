@@ -1,10 +1,18 @@
+import sys
+
 def sort_on(dict):
     return dict["num"]
 
 
 def get_content(file_path: str) -> str:
-    with open(file_path) as f:
-        return f.read()
+    content = ""
+    try:
+        with open(file_path) as f:
+            content = f.read()
+    except FileNotFoundError:
+        print(f"File {file_path} not found. Please provide the correct path to your book.")
+        sys.exit(1)
+    return content
 
 
 def get_num_words(file_path: str) -> str:
